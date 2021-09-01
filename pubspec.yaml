@@ -51,6 +51,9 @@ flutter:
     - img/venum.png
     - img/rapido.png
     - img/fornite.jpg
+    - img/warzone.jpg
+    - img/discussion.jpg
+    - img/fortnite.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

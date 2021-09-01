@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitch/service.dart';
 
 void main() {
   runApp(MyApp());
@@ -45,17 +46,27 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
+                 GestureDetector(
+                   onTap: (){
+                     Navigator.push(
+                         context,
+                         MaterialPageRoute(
+                           builder: (context) => HomePage(),
+                         ));
+                   },
+                   child:  Container(
+                     height: MediaQuery.of(context).size.height *0.05,
+                     width: MediaQuery.of(context).size.height *0.05,
+                     decoration: BoxDecoration(
+                         image:DecorationImage(
+                             image:  AssetImage('img/icon2.png'),
+                             fit: BoxFit.fitHeight
+                         )
+                     ),
+                   ),
+                 ),
                   Container(
-                    height: MediaQuery.of(context).size.height *0.05,
-                    width: MediaQuery.of(context).size.height *0.05,
-                    decoration: BoxDecoration(
-                      image:DecorationImage(
-                        image:  AssetImage('img/icon2.png'),
-                        fit: BoxFit.fitHeight
-                      )
-                    ),
-                  ),
-                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     height: MediaQuery.of(context).size.height *0.08,
                     width: MediaQuery.of(context).size.width *0.70,
                     decoration: BoxDecoration(
@@ -70,23 +81,33 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Color.fromARGB(255,34,35,40),
                       borderRadius: BorderRadius.all(Radius.circular(20))
                     ),
-                    child: Row(
-                      children: [
-                        //TextFormField()
-                      ],
-                    ),
+                    child:
+                        TextFormField(
+                          onChanged: (val){
+                        },
+                          style:TextStyle(
+                            color:Color.fromARGB(255,26,27,32)
+                          ),
+                          decoration: InputDecoration(
+                            hintText: 'Search, games, channels',
+                            hintStyle: TextStyle(
+                                color:Color.fromARGB(255,101, 101, 101)
+                            ),
+                            border: InputBorder.none,
+                          ),
+                        )
                   ),
                 ],
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height *0.80,
+              height: MediaQuery.of(context).size.height *0.75,
                 width: MediaQuery.of(context).size.width,
               child: ListView(
                 padding: EdgeInsets.all(0),
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height *0.10,
+                    height: MediaQuery.of(context).size.height *0.07,
                     width: MediaQuery.of(context).size.width *0.20,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -337,6 +358,73 @@ class _MyHomePageState extends State<MyHomePage> {
                         )
                       ],
                     ),
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height *0.30,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Catégories', style: TextStyle(color: Colors.white,fontSize:MediaQuery.of(context).size.height *0.03,fontWeight: FontWeight.bold ),),
+                              GestureDetector(onTap: (){}, child: Text('View all', style: TextStyle(color: Color.fromARGB(200,48,50,55),fontSize:MediaQuery.of(context).size.height *0.025,fontWeight: FontWeight.bold ),),)
+                            ]
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GestureDetector(
+                              onTap: (){},
+                              child: Container(
+                                height:MediaQuery.of(context).size.height *0.2,
+                                width: MediaQuery.of(context).size.width *0.28,
+                                decoration: BoxDecoration(
+                                    image:DecorationImage(
+                                        image:  AssetImage('img/warzone.jpg'),
+                                        fit: BoxFit.fitHeight
+                                    ),
+                                    color: Color.fromARGB(255,33,34,38),
+                                    borderRadius: BorderRadius.circular(10)
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: (){},
+                              child: Container(
+                                height:MediaQuery.of(context).size.height *0.2,
+                                width: MediaQuery.of(context).size.width *0.28,
+                                decoration: BoxDecoration(
+                                    image:DecorationImage(
+                                        image:  AssetImage('img/fortnite.jpg'),
+                                        fit: BoxFit.fitHeight
+                                    ),
+                                    color: Color.fromARGB(255,33,34,38),
+                                    borderRadius: BorderRadius.circular(10)
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: (){},
+                              child: Container(
+                                height:MediaQuery.of(context).size.height *0.2,
+                                width: MediaQuery.of(context).size.width *0.28,
+                                decoration: BoxDecoration(
+                                    image:DecorationImage(
+                                        image:  AssetImage('img/discussion.jpg'),
+                                        fit: BoxFit.fitHeight
+                                    ),
+                                    color: Color.fromARGB(255,33,34,38),
+                                    borderRadius: BorderRadius.circular(10)
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
@@ -344,7 +432,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+        bottomNavigationBar: BottomBar()
     );
-
+    }
+    }
+class BottomBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+        color: Color.fromARGB(255,26,27,32),
+      child: Container(
+        height: MediaQuery.of(context).size.height *0.075,
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          children: [
+            GestureDetector(
+              onTap: (){},
+              child: Container(
+                height: MediaQuery.of(context).size.height *0.05,
+                width: MediaQuery.of(context).size.height *0.05,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
